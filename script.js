@@ -1,4 +1,5 @@
 import { searchComments } from "./searchComments.mjs";
+import { printToHTML } from "./printToHTML.mjs";
 
 let posts = [
   {
@@ -54,4 +55,6 @@ let commentsPromise = new Promise((resolve) => {
   }, 1300);
 });
 
-Promise.all([postsPromise, commentsPromise]).then(searchComments);
+Promise.all([postsPromise, commentsPromise])
+  .then(searchComments)
+  .then(printToHTML);

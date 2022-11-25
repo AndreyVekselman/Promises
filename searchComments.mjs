@@ -1,8 +1,7 @@
-import { printToHTML } from "./printToHTML.mjs";
-
 export function searchComments(array) {
   const a = array[0];
   const b = array[1];
+  let outText = "";
   a.forEach((a_element) => {
     let count = 0;
     b.forEach((b_element) => {
@@ -11,20 +10,17 @@ export function searchComments(array) {
       }
     });
     if (count == 0) {
-      printToHTML(
-        `Post #${a_element.id}: ${a_element.postText} <br> <br>commets: no comments `
-      );
+      outText += `<br> Post #${a_element.id}: ${a_element.postText} <br> <br>commets: no comments<br><br>`;
     } else {
-      printToHTML(
-        `Post #${a_element.id}: ${a_element.postText} <br><br>comments: `
-      );
+      outText += `<br> Post #${a_element.id}: ${a_element.postText}<br> <br>comments:<br> `;
       count = 1;
       b.forEach((b_element) => {
         if (a_element.id == b_element.post_id) {
-          printToHTML(`comment ${count}: ${b_element.commentText}`);
+          outText += `comment ${count}: ${b_element.commentText} <br>`;
           count++;
         }
       });
     }
   });
+  return outText;
 }

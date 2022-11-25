@@ -7,8 +7,7 @@ export function searchComments(array) {
     outText += `<br> Post #${a_element.id}: ${a_element.postText}<br> <br>comments:<br> `;
     b.forEach((b_element) => {
       if (a_element.id == b_element.post_id) {
-        count++;
-        outText += `comment ${count}: ${b_element.commentText} <br>`;
+        outText += `comment ${++count}: ${b_element.commentText} <br>`;
       }
     });
     if (count == 0) {

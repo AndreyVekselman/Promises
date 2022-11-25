@@ -4,22 +4,15 @@ export function searchComments(array) {
   let outText = "";
   a.forEach((a_element) => {
     let count = 0;
+    outText += `<br> Post #${a_element.id}: ${a_element.postText}<br> <br>comments:<br> `;
     b.forEach((b_element) => {
       if (a_element.id == b_element.post_id) {
         count++;
+        outText += `comment ${count}: ${b_element.commentText} <br>`;
       }
     });
     if (count == 0) {
-      outText += `<br> Post #${a_element.id}: ${a_element.postText} <br> <br>commets: no comments<br><br>`;
-    } else {
-      outText += `<br> Post #${a_element.id}: ${a_element.postText}<br> <br>comments:<br> `;
-      count = 1;
-      b.forEach((b_element) => {
-        if (a_element.id == b_element.post_id) {
-          outText += `comment ${count}: ${b_element.commentText} <br>`;
-          count++;
-        }
-      });
+      outText += `no comments<br><br>`;
     }
   });
   return outText;
